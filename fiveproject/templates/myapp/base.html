@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <title></title>
+</head>
+<body>
+   <nav>
+    <div class="brand-logo">
+      <a href="{% url 'index' %}" class="brand-logo">Mysite</a>
+      </div>
+      <ul class="right hide-on-med-and-down" id="nav-mobile">
+        <li><a href="{% url 'admin:index' %}">Admin</a></li>
+        <li><a href="{% url 'myapp:register' %}">Registration</a></li>
+        
+
+          {% if user.is_authenticated %}
+          <li><a class = "navbar-link" href="{% url 'logout' %}">Logout</a></li>
+          {% else %}
+
+          <li><a  class = "navbar-link" href="{% url "myapp:user_login" %}">Login</a></li>
+
+          {% endif %}
+
+
+
+
+      </ul>
+     </div>
+    </nav>
+
+      <div class="container">
+
+        {% block body_block %}
+        {% endblock %}
+
+      </div>
+
+    
+</body>
+</html>
